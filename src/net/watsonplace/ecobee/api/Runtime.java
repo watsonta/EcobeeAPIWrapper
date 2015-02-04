@@ -2,8 +2,6 @@ package net.watsonplace.ecobee.api;
 
 import java.lang.reflect.Type;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 
 public class Runtime extends APIObject {
@@ -27,28 +25,68 @@ public class Runtime extends APIObject {
 	private Integer desiredDehumidity; // The desired dehumidification set point.
 	private String desiredFanMode; // The desired fan mode. Values: auto, on or null if the HVAC system is off and the thermostat is not controlling a fan independently. 
 	
-	public boolean isConnected() {
+	public String getRuntimeRev() {
+		return runtimeRev;
+	}
+
+	public Boolean getConnected() {
 		return connected;
 	}
-	
-	public float getTemperature() {
-		return actualTemperature/10.0f;
+
+	public String getFirstConnected() {
+		return firstConnected;
 	}
-	
-	public void setTemperature(float desiredHeat) {
-		this.desiredHeat = (int)desiredHeat*10;
+
+	public String getConnectDateTime() {
+		return connectDateTime;
 	}
-	
-	public int getHumidity() {
+
+	public String getDisconnectDateTime() {
+		return disconnectDateTime;
+	}
+
+	public String getLastModified() {
+		return lastModified;
+	}
+
+	public String getLastStatusModified() {
+		return lastStatusModified;
+	}
+
+	public String getRuntimeDate() {
+		return runtimeDate;
+	}
+
+	public Integer getRuntimeInterval() {
+		return runtimeInterval;
+	}
+
+	public Float getActualTemperature() {
+		return actualTemperature/10f;
+	}
+
+	public Integer getActualHumidity() {
 		return actualHumidity;
 	}
 
-	public Integer getDesiredHeat() {
-		return Math.round(desiredHeat/10f);
+	public Float getDesiredHeat() {
+		return desiredHeat/10f;
 	}
 
-	public Integer getDesiredCool() {
-		return Math.round(desiredCool/10f);
+	public Float getDesiredCool() {
+		return desiredCool/10f;
+	}
+
+	public Integer getDesiredHumidity() {
+		return desiredHumidity;
+	}
+
+	public Integer getDesiredDehumidity() {
+		return desiredDehumidity;
+	}
+
+	public String getDesiredFanMode() {
+		return desiredFanMode;
 	}
 
 	@Override

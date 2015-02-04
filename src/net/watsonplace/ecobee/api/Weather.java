@@ -2,8 +2,6 @@ package net.watsonplace.ecobee.api;
 
 import java.lang.reflect.Type;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 
 public class Weather extends APIObject {
@@ -14,10 +12,18 @@ public class Weather extends APIObject {
 	private String weatherStation; // The weather station identifier.
 	private WeatherForecast[] forecasts; // The list of latest weather station forecasts.
 	
+	public String getTimestamp() {
+		return timestamp;
+	}
+
+	public String getWeatherStation() {
+		return weatherStation;
+	}
+
 	public WeatherForecast[] getForecasts() {
 		return forecasts;
 	}
-	
+
 	@Override
 	public String[] getAPIObjectIdentifier() {
 		return APIObjectIdentifier;

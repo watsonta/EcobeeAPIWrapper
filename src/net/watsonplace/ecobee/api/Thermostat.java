@@ -2,8 +2,6 @@ package net.watsonplace.ecobee.api;
 
 import java.lang.reflect.Type;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 
 public class Thermostat extends APIObject {
@@ -43,18 +41,147 @@ public class Thermostat extends APIObject {
 		this.isRegistered = true;
 	}
 	
+	
+	public String getIdentifier() {
+		return identifier;
+	}
+
+
 	public String getName() {
 		return name;
 	}
-	
+
+
+	public String getThermostatRev() {
+		return thermostatRev;
+	}
+
+
+	public boolean isRegistered() {
+		return isRegistered;
+	}
+
+
+	public String getModelNumber() {
+		return modelNumber;
+	}
+
+
+	public String getLastModified() {
+		return lastModified;
+	}
+
+
+	public String getThermostatTime() {
+		return thermostatTime;
+	}
+
+
+	public String getUtcTime() {
+		return utcTime;
+	}
+
+
+	public Alert[] getAlerts() {
+		return alerts;
+	}
+
+
+	public Settings getSettings() {
+		return settings;
+	}
+
+
 	public Runtime getRuntime() {
 		return runtime;
 	}
-	
+
+
+	public ExtendedRuntime getExtendedRuntime() {
+		return extendedRuntime;
+	}
+
+
+	public Electricity getElectricity() {
+		return electricity;
+	}
+
+
+	public Device[] getDevices() {
+		return devices;
+	}
+
+
+	public Location getLocation() {
+		return location;
+	}
+
+
+	public Technician getTechnician() {
+		return technician;
+	}
+
+
+	public Utility getUtility() {
+		return utility;
+	}
+
+
+	public Management getManagement() {
+		return management;
+	}
+
+
 	public Weather getWeather() {
 		return weather;
 	}
-	
+
+
+	public Event[] getEvents() {
+		return events;
+	}
+
+
+	public Program getProgram() {
+		return program;
+	}
+
+
+	public HouseDetails getHouseDetails() {
+		return houseDetails;
+	}
+
+
+	public Object getOemCfg() {
+		return oemCfg;
+	}
+
+
+	public String getEquipmentStatus() {
+		return equipmentStatus;
+	}
+
+
+	public NotificationSettings getNotificationSettings() {
+		return notificationSettings;
+	}
+
+
+	public Object getPrivacy() {
+		return privacy;
+	}
+
+
+	public Version getVersion() {
+		return version;
+	}
+
+
+	public SecuritySettings getSecuritySettings() {
+		return securitySettings;
+	}
+
+
 	@Override
 	public String[] getAPIObjectIdentifier() {
 		return APIObjectIdentifier;

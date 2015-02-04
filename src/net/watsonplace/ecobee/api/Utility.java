@@ -2,11 +2,9 @@ package net.watsonplace.ecobee.api;
 
 import java.lang.reflect.Type;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 
-public class Utility extends APIObject {
+class Utility extends APIObject {
 	public static String[] APIObjectIdentifier = new String[] { "utility" };
 	public static Type APIObjectType = new TypeToken<Utility>(){}.getType();
 	

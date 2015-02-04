@@ -2,15 +2,9 @@ package net.watsonplace.ecobee.api;
 
 import java.io.StringReader;
 import java.lang.reflect.Type;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
-import java.util.Set;
-
-import org.apache.log4j.Logger;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -18,7 +12,6 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonToken;
 
 public class EcobeeResponse<T extends APIObject> {
-	private static final Logger logger = Logger.getLogger(EcobeeResponse.class.getName());
 	
 	private static final Map<String, Type> typeMap;
 	static {
@@ -99,15 +92,15 @@ public class EcobeeResponse<T extends APIObject> {
 		rdr.endObject();
 		rdr.close();
 	}
-	
+
 	public Page getPage() {
 		return page;
 	}
-	
-	public Set<T> getResponse() {
+
+	public HashSet<T> getResponse() {
 		return response;
 	}
-	
+
 	public Status getStatus() {
 		return status;
 	}

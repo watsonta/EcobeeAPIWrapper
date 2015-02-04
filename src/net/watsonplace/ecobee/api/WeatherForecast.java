@@ -3,8 +3,6 @@ package net.watsonplace.ecobee.api;
 import java.lang.reflect.Type;
 import java.util.HashMap;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 
 public class WeatherForecast extends APIObject {
@@ -39,31 +37,91 @@ public class WeatherForecast extends APIObject {
 		symbolMappings.put(21, "dust");
 	}
 
-	Integer weatherSymbol; // The Integer value used to map to a weatherSymbol. See list of mappings above.
-	String dateTime; // The time stamp of the weather forecast.
-	String condition; // A text value reprsenting the current weather condition.
-	Integer temperature; // The current temperature.
-	Integer pressure; // The current barometric pressure.
-	Integer relativeHumidity; // The current humidity.
-	Integer dewpoint; // The dewpoint.
-	Integer visibility; // The visibility.
-	Integer windSpeed; // The wind speed as an integer in mph * 1000.
-	Integer windGust; // The wind gust speed.
-	String windDirection; // The wind direction.
-	Integer windBearing; // The wind bearing.
-	Integer pop; // Probability of precipitation.
-	Integer tempHigh; // The predicted high temperature for the day.
-	Integer tempLow; // The predicted low temperature for the day.
-	Integer sky; // The cloud cover condition.
-	
-	public int getTemperature() {
-		return temperature;
+	private Integer weatherSymbol; // The Integer value used to map to a weatherSymbol. See list of mappings above.
+	private String dateTime; // The time stamp of the weather forecast.
+	private String condition; // A text value reprsenting the current weather condition.
+	private Integer temperature; // The current temperature.
+	private Integer pressure; // The current barometric pressure.
+	private Integer relativeHumidity; // The current humidity.
+	private Integer dewpoint; // The dewpoint.
+	private Integer visibility; // The visibility.
+	private Integer windSpeed; // The wind speed as an integer in mph * 1000.
+	private Integer windGust; // The wind gust speed.
+	private String windDirection; // The wind direction.
+	private Integer windBearing; // The wind bearing.
+	private Integer pop; // Probability of precipitation.
+	private Integer tempHigh; // The predicted high temperature for the day.
+	private Integer tempLow; // The predicted low temperature for the day.
+	private Integer sky; // The cloud cover condition.
+		
+	public HashMap<Integer, String> getSymbolMappings() {
+		return symbolMappings;
 	}
-	
-	public int getHumidity() {
+
+	public Integer getWeatherSymbol() {
+		return weatherSymbol;
+	}
+
+	public String getDateTime() {
+		return dateTime;
+	}
+
+	public String getCondition() {
+		return condition;
+	}
+
+	public Float getTemperature() {
+		return temperature/10f;
+	}
+
+	public Integer getPressure() {
+		return pressure;
+	}
+
+	public Integer getRelativeHumidity() {
 		return relativeHumidity;
 	}
-	
+
+	public Float getDewpoint() {
+		return dewpoint/10f;
+	}
+
+	public Integer getVisibility() {
+		return visibility;
+	}
+
+	public Float getWindSpeed() {
+		return windSpeed/1000f;
+	}
+
+	public Float getWindGust() {
+		return windGust/1000f;
+	}
+
+	public String getWindDirection() {
+		return windDirection;
+	}
+
+	public Integer getWindBearing() {
+		return windBearing;
+	}
+
+	public Integer getPop() {
+		return pop;
+	}
+
+	public Float getTempHigh() {
+		return tempHigh/10f;
+	}
+
+	public Float getTempLow() {
+		return tempLow/10f;
+	}
+
+	public Integer getSky() {
+		return sky;
+	}
+
 	@Override
 	public String[] getAPIObjectIdentifier() {
 		return APIObjectIdentifier;

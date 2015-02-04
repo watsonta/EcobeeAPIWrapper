@@ -8,10 +8,7 @@ import java.util.Set;
 import net.watsonplace.ecobee.api.Functions.FunctionType;
 import net.watsonplace.ecobee.api.oauth2.OAuthUtils;
 
-import org.apache.log4j.Logger;
-
 public class APIWrapper implements API {
-	private static final Logger logger = Logger.getLogger(APIWrapper.class.getName());
 	private static APIWrapper singleton = null;
 	
 	public static APIWrapper getInstance() throws Exception {
@@ -47,18 +44,6 @@ public class APIWrapper implements API {
 			}
 		}
 		return returnSet;
-	}
-	
-	@Override
-	public float getCoolingSetPoint(Thermostat thermostat) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public float getHeatingSetPoint(Thermostat thermostat) {
-		// TODO Auto-generated method stub
-		return 0;
 	}
 	
 	@Override

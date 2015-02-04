@@ -7,7 +7,7 @@ import java.util.Set;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
-public class Functions {
+class Functions {
 	
 	enum FunctionType { acknowledge, controlPlug, createVacation, deleteVacation,
 		resetPreferences, resumeProgram, sendMessage, setHold, setOccupied }
