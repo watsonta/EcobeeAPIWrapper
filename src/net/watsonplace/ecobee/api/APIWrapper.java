@@ -62,6 +62,18 @@ public class APIWrapper implements API {
 	}
 	
 	@Override
+	public void releaseHold() throws Exception {
+		Functions functions = new Functions(new Selection(Selection.SelType.registered, ""));
+		Map<String, String> holdParams = new HashMap<>();
+		functions.add(FunctionType.resumeProgram, holdParams);
+		EcobeeResponse<APIObject> response = oauthUtils.postProtectedResource("/thermostat", functions.toJson());
+		Status status = response.getStatus();
+		if (status.getCode() > 0) {
+			throw new Exception("Request failed: Ecobee status code="+status.getCode()+", message="+status.getMessage());
+		}
+	}
+	
+	@Override
 	public void sendMessage(String message) throws Exception {
 		Functions functions = new Functions(new Selection(Selection.SelType.registered, ""));
 		Map<String, String> msgParams = new HashMap<>();
