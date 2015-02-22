@@ -47,8 +47,8 @@ public class APIWrapper implements API {
 	}
 	
 	@Override
-	public void setHold(int desiredHeatTemp, int desiredColdTemp, int holdHours) throws Exception {
-		Functions functions = new Functions(new Selection(Selection.SelType.registered, ""));
+	public void setHold(String[] identifiers, int desiredHeatTemp, int desiredColdTemp, int holdHours) throws Exception {
+		Functions functions = new Functions(new Selection(Selection.SelType.thermostats, toCSV(identifiers)));
 		Map<String, String> holdParams = new HashMap<>();
 		holdParams.put("holdHours", new Integer(holdHours).toString());
 		holdParams.put("heatHoldTemp", new Integer(desiredHeatTemp*10).toString());
@@ -62,8 +62,8 @@ public class APIWrapper implements API {
 	}
 	
 	@Override
-	public void releaseHold() throws Exception {
-		Functions functions = new Functions(new Selection(Selection.SelType.registered, ""));
+	public void releaseHold(String[] identifiers) throws Exception {
+		Functions functions = new Functions(new Selection(Selection.SelType.thermostats, toCSV(identifiers)));
 		Map<String, String> holdParams = new HashMap<>();
 		functions.add(FunctionType.resumeProgram, holdParams);
 		EcobeeResponse<APIObject> response = oauthUtils.postProtectedResource("/thermostat", functions.toJson());
@@ -74,8 +74,8 @@ public class APIWrapper implements API {
 	}
 	
 	@Override
-	public void sendMessage(String message) throws Exception {
-		Functions functions = new Functions(new Selection(Selection.SelType.registered, ""));
+	public void sendMessage(String[] identifiers, String message) throws Exception {
+		Functions functions = new Functions(new Selection(Selection.SelType.thermostats, toCSV(identifiers)));
 		Map<String, String> msgParams = new HashMap<>();
 		msgParams.put("text", message);
 		functions.add(FunctionType.sendMessage, msgParams);
@@ -85,5 +85,17 @@ public class APIWrapper implements API {
 			throw new Exception("Request failed: Ecobee status code="+status.getCode()+", message="+status.getMessage());
 		}
 	}
-
+	
+	// Convert an array of String into a CSV String
+	private String toCSV(String[] values) {
+		StringBuilder sb = new StringBuilder();
+		for (int i=0; i<values.length; i++) {
+			sb.append(values[i]);
+			if (i < values.length-1) {
+				sb.append(',');
+			}
+		}
+		return sb.toString();
+	}
+	
 }
